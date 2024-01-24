@@ -23,6 +23,32 @@ Generate shielded address
   'ivk': '4f8757ec009325e3a4ead1988986cc6ad078951caa6e948534d4a3ca77e64903',
   'nk': '82e3f4028a019f8e2510e95f2109e9ce0401ceb37c3f8288b84a9c796c9f7913',
   'nsk': '298b8ef945c1aa04a81fe04c5cd44ca674c6393053078bc6b3200414544ac109',
+  'ovk': 'd82520ba6aedd623ff831ca89bba9cc9d78a44eabf4d5099922386a7e5ee4dc1',
+  'payment_address': 'ztron1rsf53w4axt5tr764dvh035tsgfmwjga66v3g9dulazq2jzxnk63t2dupvl7ufca0fnjdj98xqqg',
+  'pkD': '2ef8d1704276e923bad32282b79fe880a908d3b6a2b5378167fdc4e3af4ce4d9',
+  'sk': '.........................omitted.......................'}
+
+Transfer shielded TRC20 tokens
+------------------------------
+
+There are 3 types of shielded transfer:
+
+* mint: from T-address to z-address
+* transfer: from z-address to z-address
+* burn: from z-address to T-address
+
+To use the :class:`~tronpy.contract.ShieldedTRC20` wrapper:
+
+``TEkQTDyZmbY6hngxdAsxzxy9r3bUNhRjdS`` is the ShieldedTRC20 of `JST` token(``TF17BgPaZYbz8oxbjhriubPDsA7ArKoLX3``) on Nile,
+which can be acquired via [Nile Testnet Faucet](http://nileex.io/join/getJoinPage). The scaling factor is 18.
+
+.. code-block:: python
+
+  client = Tron(network='nile')
+  shielded_trc20 = client.get_contract_as_shielded_trc20('TEkQTDyZmbY6hngxdAsxzxy9r3bUNhRjdS')
+
+  taddr = 'TJRabPrwbZy45sbavfcjinPJC18kjpRTv8'
+  priv_key = PrivateKey(bytes.fromhex("................omitted.............................."))
 
   # check allowance
   print('Allowance:', shielded_trc20.trc20.functions.allowance(taddr, shielded_trc20.shielded.contract_address))

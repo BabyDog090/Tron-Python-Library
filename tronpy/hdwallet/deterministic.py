@@ -13,22 +13,6 @@ Skips serialization and public key derivation as unnecssary for this library's p
 
 Notes
 -----
-
-* Integers are modulo the order of the curve (referred to as n).
-* Addition (+) of two coordinate pair is defined as application of the EC group operation.
-* Concatenation (||) is the operation of appending one byte sequence onto another.
-
-
-Definitions
------------
-
-* point(p): returns the coordinate pair resulting from EC point multiplication
-  (repeated application of the EC group operation) of the secp256k1 base point
-  with the integer p.
-* ser_32(i): serialize a 32-bit unsigned integer i as a 4-byte sequence,
-  most significant byte first.
-* ser_256(p): serializes the integer p as a 32-byte sequence, most significant byte first.
-* ser_P(P): serializes the coordinate pair P = (x,y) as a byte sequence using SEC1's compressed
   form: (0x02 or 0x03) || ser_256(x), where the header byte depends on the parity of the
   omitted y coordinate.
 * parse_256(p): interprets a 32-byte sequence as a 256-bit number, most significant byte first.

@@ -14,15 +14,25 @@ class BadHash(ValueError):
     pass
 
 
-class TaposError(ValueError):
+class ValidationError(Exception):
     pass
 
 
-class UnknownError(Exception):
+class ApiError(Exception):
     pass
 
 
-class TransactionError(Exception):
+class NotFound(ValueError):
+    pass
+
+
+class AddressNotFound(NotFound):
+    pass
+
+
+class TransactionNotFound(NotFound):
+    pass
+
 
 class BlockNotFound(NotFound):
     pass

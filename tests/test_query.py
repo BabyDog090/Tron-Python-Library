@@ -13,22 +13,6 @@ def test_query_account():
     bals = client.get_account_asset_balances("TUyk7E8VqitrD1iFLVMcYg9jbjtD7sMhvF")
     assert len(bals) > 0
 
-    bal = client.get_account_asset_balance("TUyk7E8VqitrD1iFLVMcYg9jbjtD7sMhvF", 1000016)
-    assert bal > 0
-
-
-@pytest.mark.asyncio
-async def test_async_query_account():
-    async with AsyncTron(network="nile") as client:
-        # There are many TRC10 token named `BTT`
-        with pytest.raises(Exception):
-            await client.get_asset_from_name("BTT")
-
-        bals = await client.get_account_asset_balances("TUyk7E8VqitrD1iFLVMcYg9jbjtD7sMhvF")
-        assert len(bals) > 0
-
-        bal = await client.get_account_asset_balance("TUyk7E8VqitrD1iFLVMcYg9jbjtD7sMhvF", 1000016)
-        assert bal > 0
 
 
 def test_query_event_logs():

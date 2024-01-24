@@ -13,22 +13,6 @@ class AsyncContract(Contract):
     def functions(self) -> "ContractFunctions":
         """The :class:`~ContractFunctions` object, wraps all contract methods."""
         if self._functions is None:
-            if self.abi:
-                self._functions = AsyncContractFunctions(self)
-                return self._functions
-            raise ValueError("can not call a contract without ABI")
-        return self._functions
-
-    def as_shielded_trc20(self) -> "AsyncShieldedTRC20":
-        return AsyncShieldedTRC20(self)
-
-
-class AsyncContractFunctions(ContractFunctions):
-    def __getitem__(self, method: str):
-        for method_abi in self._contract.abi:
-            if method_abi.get("type", "").lower() == "function" and method_abi["name"] == method:
-                return AsyncContractMethod(method_abi, self._contract)
-
         raise KeyError(f"contract has no method named '{method}'")
 
 

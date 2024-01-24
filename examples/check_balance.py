@@ -13,5 +13,3 @@ def check_balance(address):
     except AddressNotFound:
         return "Adress not found..!"
 
-
-pprint(check_balance("<address>"))

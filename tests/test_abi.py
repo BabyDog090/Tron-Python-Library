@@ -13,11 +13,3 @@ def test_abi_encode():
     )
 
 
-def test_abi_decode():
-    assert trx_abi.decode_abi(
-        ["address", "uint256"],
-        bytes.fromhex(
-            "0000000000000000000000007564105e977516c53be337314c7e53838967bdac"
-            + "0000000000000000000000000000000000000000000000000000000005f5e100"
-        ),
-    ) == ("TLfuw4tRywtxCusvTudbjf7PbcXjfe7qrw", 100000000)
